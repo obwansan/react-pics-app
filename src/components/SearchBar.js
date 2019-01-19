@@ -2,12 +2,25 @@ import React from 'react';
 
 class SearchBar extends React.Component {
 
-  state = { term: 'Howdy!' };
+  state = { term: '' };
 
+  // The ES6 fat arrow function binds the 'this' to the
+  // class containing the method (i.e. SearchBar)
+  onFormSubmit = (event) => {
+    event.preventDefault();
+    this.props.onSubmit(this.state.term);
+  }
+
+  // When something is entered/deleted from the input element, this is an event (object).
+  // The value of the input element is stored on the e.target.value property.
+  // We pass the event object into the onChange callback so we can access e.target.value
+  // and set it on the state object's term property. This is then assigned to the input 
+  // element's value attribute (which would hold the same value if it wasn't assigned this.state.term!) 
+  // onFormSubmit is called when the user presses enter.
   render() {
     return (
       <div className="ui segment">
-        <form className="ui form">
+        <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="field">
           <label>Image Search</label>
            <input 
