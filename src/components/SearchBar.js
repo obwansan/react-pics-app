@@ -4,7 +4,7 @@ class SearchBar extends React.Component {
 
   state = { term: '' };
 
-  // The ES6 fat arrow function binds the 'this' to the
+  // The ES6 fat arrow function binds the 'this' context to the
   // class containing the method (i.e. SearchBar)
   onFormSubmit = (event) => {
     event.preventDefault();
