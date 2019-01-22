@@ -1,4 +1,6 @@
+import './ImageList.css';
 import React from 'react';
+import ImageCard from './ImageCard';
 
 const ImageList = props => {
   // loop over each image object in the images array (retrived from the api 
@@ -6,10 +8,10 @@ const ImageList = props => {
   const images = props.images.map((image) => {
     // Access the regular URL on the image object (which you can view 
     // for a query in Console > Network > Preview )
-    return <img key={image.id} src={image.urls.regular} alt={image.description} />
+    return <ImageCard key={image.id} image={image} />
   });
 
-  return <div>{images}</div>;
+  return <div className="image-list">{images}</div>;
 };
 
 export default ImageList;
